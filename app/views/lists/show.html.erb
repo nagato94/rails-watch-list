@@ -1,0 +1,32 @@
+
+<div class="container shadow p-3 mb-5 bg-white mt-5 rounded w-50">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'cinema.jpg'%>);">
+  <div class="container">
+    <h1 class="mt-5 text-center"><%= @list.name.capitalize %></h1>
+  </div>
+</div>
+  <div class="card border-0 d-flex align-items-center">
+  </div>
+
+  <% @list.bookmarks.each do |bookmark| %>
+    <div class="card-body m-2 p-2 d-flex justify-content-between align-items-center bookmark-item">
+      <div>
+        <p class="mb-1"><strong>Title:</strong> <%= bookmark.movie.title %></p>
+        <p class="mb-1"><strong>Comment:</strong> <%= bookmark.comment %></p>
+      </div>
+      <%= link_to bookmark_path(bookmark), method: :delete,   data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' },
+      class: 'btn-lg btn-link text-danger' do %>
+      <i class="fas fa-trash"></i>
+    <% end %>
+    </div>
+  <% end %>
+
+  <%= link_to lists_path, class: "btn btn-secondary mt-3" do %>
+  <i class="fa-solid fa-rotate-left"></i> Back to list
+  <% end %>
+
+
+  <%= link_to new_list_bookmark_path(@list), class: "btn btn-success mt-3" do %>
+   <i class="fa-solid fa-plus"></i> Add bookmark
+   <% end %>
+</div>
