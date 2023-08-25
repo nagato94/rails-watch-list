@@ -9,7 +9,19 @@
   font-size: 24px;
   font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 20px, rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 5px;
+  border: 6px solid #ccc;
+
+  &:hover {
+    box-shadow: -1px 15px 151px -7px rgba(0,0,0,1);
+    -webkit-box-shadow: -1px 15px 151px -7px rgba(0,0,0,1);
+    -moz-box-shadow: -1px 15px 151px -7px rgba(0,0,0,1);
+    transition: .3s ease-in-out;
+    transform: scale(1.1) ;
+-webkit-transform: scale(1.1) ;
+-moz-transform: scale(1.1) ;
+  }
 }
 
 .card-large {

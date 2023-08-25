@@ -1,5 +1,5 @@
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'cinema.jpg'%>);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'cinema2.jpg'%>); ">
     <h1 class="text-center">Save any kind of movies</h1>
   </div>
 
@@ -9,9 +9,8 @@
   </div>
 </div>
 <div class="container py-5">
+    <h2 class="mb-0 text-center">My Lists</h2>
   <div class="d-flex align-items-center justify-content-between mb-3">
-    <h3 class="mb-0">My Lists</h3>
-    <%= link_to "Create a movie list", new_list_path, class: "btn btn-success" %>
   </div>
   <div class="row">
     <% @lists.each do |list| %>
