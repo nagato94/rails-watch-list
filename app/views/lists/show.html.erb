@@ -1,33 +1,45 @@
-
 <div class="container shadow p-3 mb-5 bg-white mt-5 rounded w-50">
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'cinema.jpg'%>);">
-  <div class="container">
-    <h1 class="mt-5 text-center"><%= @list.name.capitalize %></h1>
-  </div>
-</div>
-  <div class="card border-0 d-flex align-items-center">
-  </div>
-
-  <% @list.bookmarks.each do |bookmark| %>
-    <div class="card-body m-2 p-2 d-flex justify-content-between align-items-center bookmark-item">
-      <div>
-        <p class="mb-1"><strong>Title:</strong> <%= bookmark.movie.title %></p>
-        <p class="mb-1"><strong>Comment:</strong> <%= bookmark.comment %></p>
-      </div>
-      
-      <%= link_to bookmark_path(bookmark), method: :delete,   data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' },
-      class: 'btn-lg btn-link text-danger' do %>
-      <i class="fas fa-trash"></i>
-    <% end %>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'cinema.jpg' %>);">
+    <div class="container">
+      <h1 class="mt-5 text-center"><%= @list.name.capitalize %></h1>
     </div>
-  <% end %>
+  </div>
 
-  <%= link_to lists_path, class: "btn btn-secondary mt-3" do %>
-  <i class="fa-solid fa-rotate-left"></i> Back to list
-  <% end %>
+  <div class="row my-2">
+    <% @list.bookmarks.each do |bookmark| %>
+      <div class="col-md-4">
+        <div class="card border-0 m-2">
+          <%= image_tag bookmark.movie.poster_url, alt: bookmark.movie.title, class: "card-img-top rounded-top" %>
+          <div class="p-3 rounded-bottom">
+            <strong><%= bookmark.movie.title %> <span class="text-muted font-weight-normal">• <%= bookmark.movie.rating %> <i class="fas fa-star star-yellow"></i></span></strong>
+            <p><small class="text-muted"><%= bookmark.movie.overview %></small></p>
+            <div class="d-flex align-items-end justify-content-between pt-4">
+              <div>
+                <i class="fas fa-quote-left me-2"></i><small class="flex-grow-1"><%= bookmark.comment %></small>
+              </div>
+              <small class="text-right flex-shrink-0">
+                <%= link_to bookmark_path(bookmark), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove #{bookmark.movie.title} from your #{@list.name} list" }, class: 'text-danger' do %>
+                <i class="fa-solid fa-trash"></i>
+                <% end %>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="d-flex justify-content-between">
+    <%= link_to lists_path, class: "btn btn-secondary mt-3" do %>
+      <i class="fa-solid fa-rotate-left"></i> Back to list
+    <% end %>
+
+    <%= link_to new_list_bookmark_path(@list), class: "btn btn-success mt-3" do %>
+      <i class="fa-solid fa-plus"></i> Add bookmark
+    <% end %>
+  </div>
+
+  
 
 
-  <%= link_to new_list_bookmark_path(@list), class: "btn btn-success mt-3" do %>
-   <i class="fa-solid fa-plus"></i> Add bookmark
-   <% end %>
 </div>

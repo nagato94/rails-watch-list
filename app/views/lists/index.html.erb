@@ -1,6 +1,6 @@
 
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'cinema.jpg'%>);">
-    <h1 class="text-center text-white">Save any kind of movies</h1>
+    <h1 class="text-center">Save any kind of movies</h1>
   </div>
 
 <div class="cover mb-4 d-flex align-items-center justify-content-center" >
@@ -18,7 +18,7 @@
       <div class="co-12 col-sm-6 col-md-4 mb-3">
         <%= link_to list_path(list), class:"text-decoration-none" do %>
           <div class="card-category" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('cinema2.jpg') %>)">
-            <%= list.name %>
+            <%= list.name.capitalize %>
           </div>
         <% end %>
       </div>
